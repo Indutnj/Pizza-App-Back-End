@@ -22,7 +22,7 @@ app.use(morgan("dev"));
 app.use("/api/pizzas", require("./routes/pizzaRoute"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/orders", require("./routes/orderRoute"));
-
+/*
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
   app.get("*", (req, res) => {
@@ -33,6 +33,11 @@ if (process.env.NODE_ENV === "production") {
     res.send("<h1>Hello From Node Server vai nodemon</h1>");
   });
 }
+*/
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

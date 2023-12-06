@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require('cors');
 
 const connectDB = require("./config/config");
 require("colors");
@@ -17,6 +18,13 @@ const app = express();
 //middlewares
 app.use(express.json());
 app.use(morgan("dev"));
+
+app.use(cors({
+  //https://profound-medovik-b95ea9.netlify.app
+    origin: 'https://pizzafactoryapp.netlify.app', // Allow requests from your local frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    //allowedHeaders: 'Content-Type,Authorization',
+  }));
 
 //route
 app.use("/api/pizzas", require("./routes/pizzaRoute"));
